@@ -10,26 +10,6 @@ import Animation exposing (px)
 import Color exposing (purple, red, rgb)
 
 
--- Software Consulting
--- Custom Software
---
--- Innovative software for the web and mobile devices.
---
---
--- Contact:
--- brian@rubylogic.net
---
--- Telephone:
--- +1 (206) 465 1034
---
--- Clients:
--- Shainin
--- Ross Strategic
--- STI
--- Greenline Legal
--- Getty Images
-
-
 type alias Model =
     { styles : List Animation.State
     , index : Int
