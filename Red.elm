@@ -1,7 +1,7 @@
 module Main exposing (..)
 
 import Time exposing (second)
-import Html exposing (h1, div, Html, h2, h4, ul, li)
+import Html exposing (h1, div, Html, h2, h4, ul, li, a)
 import Html.Attributes as Attr
 import Html.Events exposing (..)
 import Svg exposing (..)
@@ -128,9 +128,33 @@ update action model =
 
 view : Model -> Html Msg
 view model =
+    div []
+        [ div [ Attr.style [ ( "width", "100%" ), ( "background-color", "gold" ) ] ] [ (viewLogo model) ]
+        , div [ Attr.style [ ( "text-align", "center" ), ( "width", "300" ) ] ]
+            [ h1 [] [ text "Elmlogic Software Consulting" ]
+            , h2 [] [ text "Innovative software for the web and mobile devices" ]
+            , div [] [ text "Clients" ]
+            , ul [ Attr.style [ ( "text-align", "center" ) ] ]
+                [ li [ Attr.style [ ( "display", "inline-block" ), ( "margin-right", "1em" ) ] ]
+                    [ Html.a [ Attr.href "http://driveshop.com" ] [ text "Drive Shop" ] ]
+                , li [ Attr.style [ ( "display", "inline-block" ), ( "margin-right", "1em" ) ] ]
+                    [ Html.a [ Attr.href "http://shainin.com" ] [ text "Shainin" ] ]
+                , li [ Attr.style [ ( "display", "inline-block" ), ( "margin-right", "1em" ) ] ]
+                    [ Html.a [ Attr.href "http://ross-stragegic.com" ] [ text "Ross Strategic" ] ]
+                , li [ Attr.style [ ( "display", "inline-block" ), ( "margin-right", "1em" ) ] ]
+                    [ Html.a [ Attr.href "http://gettyimages.com" ] [ text "Getty Images" ] ]
+                , li [ Attr.style [ ( "display", "inline-block" ), ( "margin-right", "1em" ) ] ]
+                    [ Html.a [ Attr.href "http://techcrunch.com" ] [ text "Greenline Legal" ] ]
+                ]
+            ]
+        ]
+
+
+viewLogo : Model -> Html Msg
+viewLogo model =
     div
-        [ onClick EverybodySwitch
-        , Attr.style [ ( "margin", "200px auto" ), ( "width", "200px" ), ( "height", "200px" ), ( "cursor", "pointer" ) ]
+        [ onMouseEnter EverybodySwitch
+        , Attr.style [ ( "margin", "50px auto" ), ( "width", "100px" ), ( "height", "100px" ), ( "cursor", "pointer" ) ]
         ]
         [ svg
             [ version "1.1"
@@ -150,17 +174,6 @@ view model =
                 []
             , Svg.g []
                 (List.map (\poly -> polygon (Animation.render poly) []) model.styles)
-            ]
-        , h1 [] [ text "Elmlogic Software Consulting" ]
-        , h2 [] [ text "Innovative software for the web and mobile devices" ]
-        , div [] [ text "Clients" ]
-        , ul []
-            [ -- [ li [] [ a [ Attr.href "http://shainin.com" ] [ text "Shainin" ] ]
-              li [] [ text "Shainin" ]
-            , li [] [ text "Ross Strategic" ]
-            , li [] [ text "Drive Shop" ]
-            , li [] [ text "Greenline Legal" ]
-            , li [] [ text "Getty Images" ]
             ]
         ]
 
